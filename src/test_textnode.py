@@ -12,7 +12,7 @@ class TestTextNode(unittest.TestCase):
     def test_repr(self):
         node = TextNode("Google", "italic", "https://google.com")
         expected_repr = "TextNode(Google, italic, https://google.com)"
-        self.assertEqual(str(node), expected_repr)
+        self.assertEqual(repr(node), expected_repr)
 
     def test_no_url(self):
         node = TextNode("This is a text node", "normal")
