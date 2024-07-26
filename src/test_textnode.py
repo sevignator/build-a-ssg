@@ -15,8 +15,7 @@ class TestTextNode(unittest.TestCase):
 
     def test_repr(self):
         node = TextNode("Google", "italic", "https://google.com")
-        expected_output = "TextNode(Google, italic, https://google.com)"
-        self.assertEqual(repr(node), expected_output)
+        self.assertEqual(repr(node), "TextNode(Google, italic, https://google.com)")
 
 
 if __name__ == "__main__":

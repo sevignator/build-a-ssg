@@ -12,13 +12,15 @@ class TestHTMLNode(unittest.TestCase):
         node = HTMLNode(
             props={"href": "https://example.com", "target": "_blank"},
         )
-        expected_output = ' href="https://example.com" target="_blank"'
-        self.assertEqual(node.props_to_html(), expected_output)
+        self.assertEqual(
+            node.props_to_html(), ' href="https://example.com" target="_blank"'
+        )
 
     def test_repr(self):
         node = HTMLNode("p", "This is a paragraph", props={"class": "lead"})
-        expected_output = "HTMLNode(p, This is a paragraph, None, {'class': 'lead'})"
-        self.assertEqual(repr(node), expected_output)
+        self.assertEqual(
+            repr(node), "HTMLNode(p, This is a paragraph, None, {'class': 'lead'})"
+        )
 
 
 if __name__ == "__main__":
