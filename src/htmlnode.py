@@ -9,6 +9,9 @@ class HTMLNode:
         raise NotImplementedError
 
     def props_to_html(self):
+        if self.props == None:
+            return ""
+
         kv_pairs = []
 
         for _, key in enumerate(self.props):
