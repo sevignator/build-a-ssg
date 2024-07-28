@@ -1,15 +1,22 @@
 class HTMLNode:
-    def __init__(self, tag=None, value=None, children=None, props=None):
-        self.tag = tag
-        self.value = value
-        self.children = children
-        self.props = props
 
-    def to_html(self):
+    def __init__(
+        self,
+        tag: str | None = None,
+        value: str | None = None,
+        children: list | None = None,
+        props: dict[str, str] | None = None,
+    ):
+        self.tag: str | None = tag
+        self.value: str | None = value
+        self.children: list | None = children
+        self.props: dict[str, str] | None = props
+
+    def to_html(self) -> None:
         raise NotImplementedError
 
-    def props_to_html(self):
-        if self.props == None:
+    def props_to_html(self) -> str:
+        if self.props is None:
             return ""
 
         kv_pairs = []

@@ -1,7 +1,7 @@
-from src.textnode import TextNode
+from textnode import TextNode
 
 
-def main():
+def main() -> None:
     text_node = TextNode("This is a text node", "bold", "https://www.boot.dev")
     print(text_node)
 

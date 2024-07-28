@@ -5,7 +5,7 @@ from src.textnode import TextNode
 
 class TestTextNode(unittest.TestCase):
     def test_no_url(self):
-        node = TextNode("This is a text node", "normal")
+        node = TextNode("This is a text node", "text")
         self.assertEqual(node.url, None)
 
     def test_eq(self):

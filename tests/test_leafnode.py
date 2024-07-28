@@ -22,7 +22,7 @@ class TestLeafNode(unittest.TestCase):
     def test_repr(self):
         node = LeafNode("p", "This is a paragraph", props={"class": "lead"})
         self.assertEqual(
-            repr(node), "LeafNode(p, This is a paragraph, None, {'class': 'lead'})"
+            repr(node), "LeafNode(p, This is a paragraph, {'class': 'lead'})"
         )
 
 
