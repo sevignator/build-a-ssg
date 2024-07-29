@@ -1,6 +1,4 @@
-from typing import Literal
-
-TextType = Literal["text", "bold", "italic", "code", "link", "image"]
+from custom_types import TextType
 
 
 class TextNode:

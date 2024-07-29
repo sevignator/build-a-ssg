@@ -1,6 +1,6 @@
 import unittest
 
-from src.htmlnode import HTMLNode
+from htmlnode import HTMLNode
 
 
 class TestHTMLNode(unittest.TestCase):
@@ -19,7 +19,8 @@ class TestHTMLNode(unittest.TestCase):
     def test_repr(self):
         node = HTMLNode("p", "This is a paragraph", props={"class": "lead"})
         self.assertEqual(
-            repr(node), "HTMLNode(p, This is a paragraph, None, {'class': 'lead'})"
+            repr(node),
+            "HTMLNode(p, This is a paragraph, None, {'class': 'lead'})",
         )
 
 
