@@ -35,8 +35,8 @@ def split_nodes_delimiter(
     new_nodes: list[TextNode] = []
 
     for node in old_nodes:
-        regex = re.compile(delimiter_to_regex_pattern(delimiter))
-        delimiter_count = len(regex.findall(node.text))
+        pattern = re.compile(delimiter_to_regex_pattern(delimiter))
+        delimiter_count = len(pattern.findall(node.text))
         split_node = list(filter(lambda x: x != "", node.text.split(delimiter)))
 
         # Handle case where the node isn't of type "text"
@@ -72,3 +72,15 @@ def delimiter_to_regex_pattern(delimiter: Delimiters):
             return r"\*\*"
         case _:
             return delimiter
+
+
+def extract_markdown_images(text: str) -> list[tuple[str, str]]:
+    """Extracts Markdown images from a string and returns each text/href pairs as tuples."""
+
+    return re.findall(r"!\[(.*?)\]\((.*?)\)", text)
+
+
+def extract_markdown_links(text: str) -> list[tuple[str, str]]:
+    """Extracts Markdown links from a string and returns each text/href pairs as tuples."""
+
+    return re.findall(r"\[(.*?)\]\((.*?)\)", text)
