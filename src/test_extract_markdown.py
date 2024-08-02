@@ -1,6 +1,6 @@
 import unittest
 
-from utils import extract_markdown_images, extract_markdown_links
+from inline import extract_markdown_images, extract_markdown_links
 
 
 class TestExtractMarkdown(unittest.TestCase):
