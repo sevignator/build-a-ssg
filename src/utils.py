@@ -6,7 +6,7 @@ from custom_types import Delimiters, TextType
 
 
 def text_node_to_html_node(text_node: TextNode):
-    """Transforms a TextNode object into its analogous LeafNode representation."""
+    """Transforms a `TextNode` object into its analogous `LeafNode` representation."""
 
     match text_node.text_type:
         case "text":
@@ -30,7 +30,7 @@ def text_node_to_html_node(text_node: TextNode):
 def split_nodes_delimiter(
     old_nodes: list[TextNode], delimiter: Delimiters, text_type: TextType
 ):
-    """Splits a TextNode's text into multiple typed ones based on a delimiter."""
+    """Splits a `TextNode`'s text into multiple typed ones based on a delimiter."""
 
     new_nodes: list[TextNode] = []
 
@@ -148,6 +148,8 @@ def extract_markdown_links(text: str) -> list[tuple[str, str]]:
 
 
 def text_to_textnodes(text: str):
+    """Creates a `TextNode` using the provided string, extracts every inline nodes within it and returns them as a list of `TextNodes`."""
+
     initial_node = TextNode(text, "text")
     nodes_with_bold = split_nodes_delimiter([initial_node], "**", "bold")
     nodes_with_italic = split_nodes_delimiter(nodes_with_bold, "*", "italic")
@@ -156,33 +158,11 @@ def text_to_textnodes(text: str):
     nodes_with_link = split_nodes_link(nodes_with_image)
 
     return nodes_with_link
-    # Example input:
-    # This is **text** with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)
-
-    # Example output:
-    # [
-    #     TextNode("This is ", text_type_text),
-    #     TextNode("text", text_type_bold),
-    #     TextNode(" with an ", text_type_text),
-    #     TextNode("italic", text_type_italic),
-    #     TextNode(" word and a ", text_type_text),
-    #     TextNode("code block", text_type_code),
-    #     TextNode(" and an ", text_type_text),
-    #     TextNode("obi wan image", text_type_image, "https://i.imgur.com/fJRm4Vk.jpeg"),
-    #     TextNode(" and a ", text_type_text),
-    #     TextNode("link", text_type_link, "https://boot.dev"),
-    # ]
 
 
-# [
-#     TextNode("This is ", "text"),
-#     TextNode("text", "bold"),
-#     TextNode(" with an ", "text"),
-#     TextNode("italic", "italic"),
-#     TextNode(" word and a ", "text"),
-#     TextNode("code block", "code"),
-#     TextNode(" and an ", "text"),
-#     TextNode("obi wan image", "image", "https://i.imgur.com/fJRm4Vk.jpeg"),
-#     TextNode(" and a ", "text"),
-#     TextNode("link", "link", "https://boot.dev"),
-# ]
+def markdown_to_blocks(markdown: str):
+    """Converts a Markdown string into a list of block strings."""
+
+    blocks = markdown.split("\n\n")
+    output = list(filter(lambda x: x != "", map(lambda x: x.strip(), blocks)))
+    return output

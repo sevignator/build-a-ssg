@@ -1,11 +1,19 @@
-from utils import text_to_textnodes
+from utils import markdown_to_blocks, text_to_textnodes
 
 
 def main() -> None:
-    nodes = text_to_textnodes(
-        "This is **text** with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
-    )
-    print(nodes)
+    text = """# This is a heading
+
+    This is a paragraph of text. It has some **bold** and *italic* words inside of it.
+
+
+
+    * This is the first list item in a list block
+    * This is a list item
+    * This is another list item
+    """
+    blocks = markdown_to_blocks(text)
+    print(blocks)
 
 
 main()
