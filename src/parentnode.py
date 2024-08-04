@@ -6,10 +6,13 @@ class ParentNode(HTMLNode):
     def __init__(
         self,
         tag: str | None = None,
-        children: list | None = None,
+        children: list[HTMLNode] | None = None,
         props: dict[str, str] | None = None,
     ):
-        super().__init__(tag=tag, children=children, props=props)
+        super().__init__(tag=tag, props=props)
+
+        if self.children is None:
+            self.children: list[HTMLNode] = children
 
         if self.tag is None:
             raise ValueError("A parent node must have a tag.")
