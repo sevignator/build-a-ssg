@@ -1,7 +1,7 @@
 import unittest
 
-
-from block import block_to_block_type, markdown_to_blocks
+from functions.block_to_block_type import block_to_block_type
+from functions.markdown_to_blocks import markdown_to_blocks
 
 
 class TestSplitBlocks(unittest.TestCase):

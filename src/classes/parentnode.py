@@ -1,8 +1,7 @@
-from htmlnode import HTMLNode
+from classes.htmlnode import HTMLNode
 
 
 class ParentNode(HTMLNode):
-
     def __init__(
         self,
         tag: str | None = None,
@@ -10,9 +9,10 @@ class ParentNode(HTMLNode):
         props: dict[str, str] | None = None,
     ):
         super().__init__(tag=tag, props=props)
+        self.children: list[HTMLNode] | None = children
 
         if self.children is None:
-            self.children: list[HTMLNode] = children
+            self.children = children
 
         if self.tag is None:
             raise ValueError("A parent node must have a tag.")

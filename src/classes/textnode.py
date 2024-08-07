@@ -1,4 +1,4 @@
-from custom_types import TextType
+from utils.custom_types import TextType
 
 
 class TextNode:
