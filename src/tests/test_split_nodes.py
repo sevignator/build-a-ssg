@@ -46,6 +46,14 @@ class TestSplitNodes(unittest.TestCase):
             '[TextNode("This is `code block` within a code text node", "code")]',
         )
 
+    def test_multiple_sentences(self):
+        node = TextNode("This is some **bold text**. And this is normal text.", "text")
+        new_nodes = split_nodes_delimiter([node], "**", "bold")
+        self.assertEqual(
+            repr(new_nodes),
+            '[TextNode("This is some ", "text"), TextNode("bold text", "bold"), TextNode(". And this is normal text.", "text")]',
+        )
+
     def test_multiple_nodes(self):
         node_1 = TextNode("This is text with a **bold** word", "text")
         node_2 = TextNode("More text with a **bold** word", "text")

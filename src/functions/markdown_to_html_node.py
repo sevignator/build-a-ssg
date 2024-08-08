@@ -1,3 +1,5 @@
+import re
+
 from classes.parentnode import ParentNode
 from functions.block_to_block_type import block_to_block_type
 from functions.extract_heading import extract_heading
@@ -7,6 +9,9 @@ from functions.text_to_children import text_to_children
 
 
 def markdown_to_html_node(markdown: str):
+    """Takes a Markdown input, converts it into blocks, determines which tag should
+    be applied to each block and returns a `ParentNode` containing those blocks."""
+
     container_node = ParentNode("div", [])
     blocks = markdown_to_blocks(markdown)
 
@@ -26,7 +31,7 @@ def markdown_to_html_node(markdown: str):
             case "code":
                 current_node = ParentNode("pre", text_to_children(block))
             case "quote":
-                current_node = ParentNode("blockquote", text_to_children(block))
+                current_node = ParentNode("blockquote", text_to_children(re.sub(r"^> ", "", block)))
             case "unordered_list":
                 current_node = ParentNode(
                     "ul",
