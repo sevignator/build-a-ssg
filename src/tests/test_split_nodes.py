@@ -55,12 +55,6 @@ class TestSplitNodes(unittest.TestCase):
             '[TextNode("This is text with a ", "text"), TextNode("bold", "bold"), TextNode(" word", "text"), TextNode("More text with a ", "text"), TextNode("bold", "bold"), TextNode(" word", "text")]',
         )
 
-    def test_uneven_delimiters(self):
-        node = TextNode("This is text with *uneven delimiters", "text")
-        self.assertRaises(
-            ValueError, lambda: split_nodes_delimiter([node], "*", "bold")
-        )
-
     def test_multi_links(self):
         node = TextNode(
             "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)",

@@ -23,9 +23,15 @@ class TextNode:
         )
 
     def __repr__(self):
-        contents = f'"{self.text}", "{self.text_type}"'
+        contents = []
+
+        if self.text is not None:
+            contents.append(f'"{self.text}"')
+
+        if self.text_type is not None:
+            contents.append(f'"{self.text_type}"')
 
         if self.url is not None:
-            contents += f', "{self.url}"'
+            contents.append(f'"{self.url}"')
 
-        return f"TextNode({contents})"
+        return f"TextNode({", ".join(contents)})"

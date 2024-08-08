@@ -27,4 +27,18 @@ class HTMLNode:
         return "".join(kv_pairs)
 
     def __repr__(self):
-        return f'HTMLNode("{self.tag}", "{self.value}", {self.children}, {self.props})'
+        contents = []
+
+        if self.tag is not None:
+            contents.append(f'"{self.tag}"')
+
+        if self.value is not None:
+            contents.append(f'"{self.value}"')
+
+        if self.children is not None:
+            contents.append(str(self.children))
+
+        if self.props is not None:
+            contents.append(str(self.props))
+
+        return f'HTMLNode({", ".join(contents)})'

@@ -20,7 +20,7 @@ class TestHTMLNode(unittest.TestCase):
         node = HTMLNode("p", "This is a paragraph", props={"class": "lead"})
         self.assertEqual(
             repr(node),
-            "HTMLNode(p, This is a paragraph, None, {'class': 'lead'})",
+            "HTMLNode(\"p\", \"This is a paragraph\", {'class': 'lead'})",
         )
 
 

@@ -29,6 +29,6 @@ class LeafNode(HTMLNode):
             contents.append(f'"{self.value}"')
 
         if self.props is not None:
-            contents.append(self.props)
+            contents.append(str(self.props))
 
         return f"LeafNode({", ".join(contents)})"

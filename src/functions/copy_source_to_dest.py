@@ -37,12 +37,10 @@ def copy_source_to_dest(src_dir: str, dest_dir: str):
 
         # Copy the file over to the destination and move to the next iteration
         if os.path.isfile(src_entry_path):
-            print(f"New file: {dest_entry_path}")
             shutil.copy(src_entry_path, dest_entry_path)
             continue
 
         # Create same directory in the destination and recursively
         # call this function.
-        print(f"New directory: {dest_entry_path}")
         os.mkdir(dest_entry_path)
         copy_source_to_dest(src_entry_path, dest_entry_path)

@@ -11,23 +11,13 @@ def split_nodes_delimiter(
     new_nodes: list[TextNode] = []
 
     for node in old_nodes:
-        pattern = re.compile(delimiter_to_regex_pattern(delimiter))
-        delimiter_count = len(pattern.findall(node.text))
-        split_node = list(filter(lambda x: x != "", node.text.split(delimiter)))
+        pattern = delimiter_to_regex_pattern(delimiter)
+        split_node = list(filter(lambda x: x != "", re.split(pattern, node.text)))
 
         # Handle case where the node isn't of type "text"
         if node.text_type != "text":
             new_nodes.append(node)
             continue
-
-        # Handle case where the delimiter is not found in the string
-        if delimiter_count == 0:
-            new_nodes.append(node)
-            continue
-
-        # Handle case where there's an uneven amount of delimiters
-        if delimiter_count % 2 == 1:
-            raise ValueError(f"A closing {delimiter} delimiter is missing.")
 
         for chunk in split_node:
             if chunk.startswith(" ") or chunk.endswith(" "):
@@ -48,4 +38,4 @@ def delimiter_to_regex_pattern(delimiter: Delimiters):
         case "**":
             return r"\*\*"
         case _:
-            return delimiter
+            return rf"{delimiter}"
