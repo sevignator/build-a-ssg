@@ -5,11 +5,11 @@ class ParentNode(HTMLNode):
     def __init__(
         self,
         tag: str | None = None,
-        children: list[HTMLNode] | None = None,
+        children: list | None = None,
         props: dict[str, str] | None = None,
     ):
         super().__init__(tag=tag, props=props)
-        self.children: list[HTMLNode] | None = children
+        self.children: list[HTMLNode] | list["ParentNode"] | None = children
 
         if self.children is None:
             self.children = children

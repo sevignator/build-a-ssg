@@ -1,8 +1,10 @@
 import re
 
+from utils.remove_empty_strings import remove_empty_strings
+
 
 def extract_heading(block: str):
-    parts = tuple(filter(lambda x: x != "", re.split(r"^(#+)\s", block)))
+    parts = tuple(remove_empty_strings(re.split(r"^(#+)\s", block)))
     level = len(parts[0])
     text = parts[1]
 

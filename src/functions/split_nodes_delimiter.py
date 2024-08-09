@@ -25,14 +25,6 @@ def split_nodes_delimiter(
             new_nodes.append(node)
             continue
 
-        # TODO: Figure out way to have italics in an unordered list without
-        # raising this exception
-        # Handle case where there's an uneven amount of delimiters
-        # if delimiter_count % 2 == 1:
-        #     raise ValueError(
-        #         f"A closing {delimiter} delimiter is missing in {node.text}."
-        #     )
-
         for chunk in split_node:
             if chunk.startswith((" ", ".")) or chunk.endswith(" "):
                 new_nodes.append(TextNode(chunk, "text"))

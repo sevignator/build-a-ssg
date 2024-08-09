@@ -1,11 +1,10 @@
-import re
-
 from classes.parentnode import ParentNode
 from functions.block_to_block_type import block_to_block_type
 from functions.extract_heading import extract_heading
 from functions.extract_list_items import extract_list_items
 from functions.markdown_to_blocks import markdown_to_blocks
 from functions.text_to_children import text_to_children
+from utils.remove_empty_strings import remove_empty_strings
 
 
 def markdown_to_html_node(markdown: str):
@@ -31,7 +30,13 @@ def markdown_to_html_node(markdown: str):
             case "code":
                 current_node = ParentNode("pre", text_to_children(block))
             case "quote":
-                current_node = ParentNode("blockquote", text_to_children(re.sub(r"^> ", "", block)))
+                paragraphs = remove_empty_strings(block.split("> "))
+                children: list = []
+
+                for p in paragraphs:
+                    children.append(*text_to_children(p))
+
+                current_node = ParentNode("blockquote", children)
             case "unordered_list":
                 current_node = ParentNode(
                     "ul",
