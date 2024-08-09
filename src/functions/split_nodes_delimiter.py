@@ -34,7 +34,7 @@ def split_nodes_delimiter(
         #     )
 
         for chunk in split_node:
-            if chunk.startswith((" ", ". ")) or chunk.endswith(" "):
+            if chunk.startswith((" ", ".")) or chunk.endswith(" "):
                 new_nodes.append(TextNode(chunk, "text"))
                 continue
 

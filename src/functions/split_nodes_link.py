@@ -1,5 +1,7 @@
 import re
+
 from classes.textnode import TextNode
+from functions.extract_markdown_links import extract_markdown_links
 
 
 def split_nodes_link(old_nodes: list[TextNode]):
@@ -10,8 +12,8 @@ def split_nodes_link(old_nodes: list[TextNode]):
             filter(lambda x: x != "", re.split(r"(\[.*?\]\(.*?\))", node.text))
         )
 
-        # Handle case where the node isn't divisible (i.e. no links)
-        if len(split_node) == 1:
+        # Handle case where the node cannot be divided and isn't a link
+        if len(split_node) == 1 and not re.match(r"(\[.*?\]\(.*?\))", split_node[0]):
             new_nodes.append(node)
             continue
 
@@ -21,12 +23,12 @@ def split_nodes_link(old_nodes: list[TextNode]):
             continue
 
         for chunk in split_node:
-            if chunk.startswith(" ") or chunk.endswith(" "):
+            if chunk.startswith((" ", ".")) or chunk.endswith(" "):
                 new_nodes.append(TextNode(chunk, "text"))
                 continue
 
-            link_text = re.findall(r"\[(.*?)\]", chunk)[0]
-            link_url = re.findall(r"\((.*?)\)", chunk)[0]
-            new_nodes.append(TextNode(link_text, "link", link_url))
+            # Handle links
+            (text, url) = extract_markdown_links(chunk)[0]
+            new_nodes.append(TextNode(text, "link", url))
 
     return new_nodes

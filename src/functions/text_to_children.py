@@ -1,5 +1,5 @@
-from classes.leafnode import LeafNode
 from functions.text_to_textnodes import text_to_textnodes
+from functions.text_node_to_html_node import text_node_to_html_node
 
 
 def text_to_children(text):
@@ -9,18 +9,6 @@ def text_to_children(text):
     html_nodes = []
 
     for node in text_nodes:
-        match node.text_type:
-            case "text":
-                html_nodes.append(LeafNode(None, node.text))
-            case "bold":
-                html_nodes.append(LeafNode("b", node.text))
-            case "italic":
-                html_nodes.append(LeafNode("i", node.text))
-            case "code":
-                html_nodes.append(LeafNode("code", node.text))
-            case "image":
-                html_nodes.append(LeafNode("img", node.text, {"href": node.url}))
-            case "link":
-                html_nodes.append(LeafNode("a", node.text, {"href": node.url}))
+        html_nodes.append(text_node_to_html_node(node))
 
     return html_nodes
