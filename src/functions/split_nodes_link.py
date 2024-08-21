@@ -2,6 +2,7 @@ import re
 
 from classes.textnode import TextNode
 from functions.extract_markdown_links import extract_markdown_links
+from utils.should_be_text import should_be_text
 from utils.remove_empty_strings import remove_empty_strings
 
 
@@ -22,7 +23,7 @@ def split_nodes_link(old_nodes: list[TextNode]):
             continue
 
         for chunk in split_node:
-            if chunk.startswith((" ", ".")) or chunk.endswith(" "):
+            if should_be_text(chunk):
                 new_nodes.append(TextNode(chunk, "text"))
                 continue
 

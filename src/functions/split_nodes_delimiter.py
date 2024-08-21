@@ -1,5 +1,6 @@
 import re
 from classes.textnode import TextNode
+from utils.should_be_text import should_be_text
 from utils.custom_types import Delimiters, TextType
 
 
@@ -26,7 +27,7 @@ def split_nodes_delimiter(
             continue
 
         for chunk in split_node:
-            if chunk.startswith((" ", ".")) or chunk.endswith(" "):
+            if should_be_text(chunk):
                 new_nodes.append(TextNode(chunk, "text"))
                 continue
 
