@@ -1,6 +1,22 @@
-# Build a Static Site Generator
+# Build a Static Site Generator project
 
-My personal solution to the [Build a Static Site Generator](https://www.boot.dev/courses/build-static-site-generator) project from [Boot.dev](https://www.boot.dev/tracks/backend).
+Personal solution to the [Build a Static Site Generator project](https://www.boot.dev/courses/build-static-site-generator) from [Boot.dev](https://www.boot.dev/tracks/backend).
+
+## Requirements
+
+- Python (3.12+)
+
+## Set up
+
+Starting from the project's root directory:
+
+1. Run the following command to generate static content and start the server:
+
+    ```sh
+    ./main.sh
+    ```
+
+2. Visit the website at http://[::]:8888/.
 
 ## Running tests
 
@@ -9,9 +25,5 @@ This project uses the [`unittest` testing framework](https://docs.python.org/3/l
 To run all tests, run the following command from the project's root:
 
 ```sh
-./scripts/test.sh
+.test.sh
 ```
-
-## Useful links
-
-- [Using Black with Pylint](https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#pylint)
