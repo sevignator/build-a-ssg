@@ -1,6 +1,6 @@
 # Build a Static Site Generator project
 
-Personal solution to the [Build a Static Site Generator project](https://www.boot.dev/courses/build-static-site-generator) from [Boot.dev](https://www.boot.dev/tracks/backend).
+Personal solution to the [Build a Static Site Generator](https://www.boot.dev/courses/build-static-site-generator) project from [Boot.dev](https://www.boot.dev/tracks/backend).
 
 ## Requirements
 
