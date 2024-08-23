@@ -15,7 +15,7 @@ Personal solution to the [Build a Static Site Generator](https://www.boot.dev/co
     ./main.sh
     ```
 
-3. Visit the website at http://[::]:8888/.
+3. Visit the website at [http://[::]:8888/](http://[::]:8888/).
 
 ## Running tests
 
