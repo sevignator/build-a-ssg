@@ -8,15 +8,14 @@ Personal solution to the [Build a Static Site Generator project](https://www.boo
 
 ## Set up
 
-Starting from the project's root directory:
-
-1. Run the following command to generate static content and start the server:
+1. Open your terminal from the project's root directory.
+2. Run the following command to generate static content and start the server:
 
     ```sh
     ./main.sh
     ```
 
-2. Visit the website at http://[::]:8888/.
+3. Visit the website at http://[::]:8888/.
 
 ## Running tests
 
@@ -25,5 +24,5 @@ This project uses the [`unittest` testing framework](https://docs.python.org/3/l
 To run all tests, run the following command from the project's root:
 
 ```sh
-.test.sh
+./test.sh
 ```
